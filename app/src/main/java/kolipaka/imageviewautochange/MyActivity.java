@@ -6,36 +6,42 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 public class MyActivity extends Activity {
     private ImageView imgView;
-    private
+    private int src[] = {R.drawable.a,R.drawable.b,R.drawable.c};
+    private Timer timer;
+    private MyTimerTask myTimerTask;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
 
-        imgView = (ImageView) findViewById(R.id.)
+        imgView = (ImageView) findViewById(R.id.imgView);
+        imgView.setImageResource(src[0]);
+
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.my, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+    class MyTimerTask extends TimerTask{
+        int index=0;
+        @Override
+        public void run() {
+            index++;
+            if (index >= 3){
+                index=0;
+            }
+          runOnUiThread(new Runnable() {
+              @Override
+              public void run() {
+                  imgView.setImageResource(src[index]);
+              }
+          });
         }
-        return super.onOptionsItemSelected(item);
     }
+
 }
