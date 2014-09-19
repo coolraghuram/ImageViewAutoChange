@@ -25,6 +25,10 @@ public class MyActivity extends Activity {
         imgView = (ImageView) findViewById(R.id.imgView);
         imgView.setImageResource(src[0]);
 
+        timer = new Timer();
+        myTimerTask = new MyTimerTask();
+        timer.schedule(myTimerTask,1000,10000);
+
     }
 
     class MyTimerTask extends TimerTask{
