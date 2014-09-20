@@ -25,7 +25,7 @@ public class MyActivity extends Activity {
 
         imgView = (ImageView) findViewById(R.id.imgView);
         imgView.setImageResource(src[0]);
-        //Toast.makeText(getApplicationContext(), "array lenght = " + src.length,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), "array length = " + src.length,Toast.LENGTH_SHORT).show();
 
         timer = new Timer();
         myTimerTask = new MyTimerTask();
