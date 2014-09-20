@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -24,6 +25,7 @@ public class MyActivity extends Activity {
 
         imgView = (ImageView) findViewById(R.id.imgView);
         imgView.setImageResource(src[0]);
+        //Toast.makeText(getApplicationContext(), "array lenght = " + src.length,Toast.LENGTH_SHORT).show();
 
         timer = new Timer();
         myTimerTask = new MyTimerTask();
@@ -36,13 +38,14 @@ public class MyActivity extends Activity {
         @Override
         public void run() {
             index++;
-            if (index >= 3){
+            if (index >= src.length){
                 index=0;
             }
           runOnUiThread(new Runnable() {
               @Override
               public void run() {
                   imgView.setImageResource(src[index]);
+
               }
           });
         }
